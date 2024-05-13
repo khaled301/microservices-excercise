@@ -14,4 +14,59 @@
 10. The client gets notified via email services about the successful conversion
 11. The client then send another request to download the converted MP3 to the API Gateway with the Auth Token
 12. API Gateway verify the request with help of an auth service
-13. After the verification gets successful the API Gateway then request fetch the MP3 from the database and send it back to the client 
+13. After the verification gets successful the API Gateway then request fetch the MP3 from the database and send it back to the client
+
+### Install Docker for Windows
+
+### Install K8s for Windows
+```
+> curl.exe -LO "https://dl.k8s.io/release/v1.30.0/bin/windows/amd64/kubectl.exe"
+
+> curl.exe -LO "https://dl.k8s.io/v1.30.0/bin/windows/amd64/kubectl.exe.sha256"
+
+> CertUtil -hashfile kubectl.exe SHA256
+
+> type kubectl.exe.sha256
+
+> $(Get-FileHash -Algorithm SHA256 .\kubectl.exe).Hash -eq $(Get-Content .\kubectl.exe.sha256)
+
+> kubectl version --client
+
+> kubectl version --client --output=yaml
+```
+
+### To run k8s locally
+https://minikube.sigs.k8s.io/docs/start/
+
+```
+>> New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+
+>> Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+
+>> $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+}
+```
+
+### K9s - Kubernetes CLI To Manage Your Clusters In Style!
+
+https://github.com/derailed/k9s
+
+K9s provides a terminal UI to interact with your Kubernetes clusters.
+The aim of this project is to make it easier to navigate, observe and manage
+your applications in the wild. K9s continually watches Kubernetes
+for changes and offers subsequent commands to interact with your observed resources.
+
+
+### Download and install Python
+
+https://www.python.org/
+
+### Download and install MySQL
+
+https://www.mysql.com/downloads/
+
+```
+mysql -u<user_name> -p<password>
+```
