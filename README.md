@@ -15,6 +15,10 @@
 11. The client then send another request to download the converted MP3 to the API Gateway with the Auth Token
 12. API Gateway verify the request with help of an auth service
 13. After the verification gets successful the API Gateway then request fetch the MP3 from the database and send it back to the client
+14. The distributed system will be under a closed cluster and can't be accessed from outside world, open internet
+15. Gateway service will be entry point of the overall application | received request from the client and will be communicate with the internal service to fulfill the request
+16. we will define the functionality of the overall applications
+17. auth service in the cluster will determine whom to access
 
 ### Install Docker for Windows
 
@@ -35,7 +39,7 @@
 > kubectl version --client --output=yaml
 ```
 
-### To run k8s locally
+### To setup k8s locally
 https://minikube.sigs.k8s.io/docs/start/
 
 ```
