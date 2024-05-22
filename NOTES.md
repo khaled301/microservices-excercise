@@ -95,6 +95,7 @@ or
 ### setup env in shell
 
 > export MYSQL_HOST=localhost
+> SET MYSQL_HOST=localhost
 
 ### get env that is set using shell
 
@@ -171,3 +172,20 @@ or
 #### if we don't define host, it will be default to localhost which means the api wont be available outside
 #### defining host to 0.0.0.0 will make the api available to all public IPs
 #### When IP address assigned to a Docker container, it means it is assigned within a Docker Network that is where the host config in flask app under server run comes in where we set it to 0.0.0.0 to listen to all publics IPs which includes the Docker Container IP. Docker Container IPs address changes and it's not static so we need to define the server host as such kind of like wild card. If we do not define it then it will be default to loop back address, localhost, which can only be accessed from the host
+
+# Dockerfile
+### 1. Each instruction in a Dockerfile, resolves in a single new images layer being created.
+### 2. So each layer creates on top of another images
+### 3. If a layer is changed, then all the layers proceeding it will be rebuild
+
+## Build a Docker Image
+> docker build .
+
+## Tag and push a docker image
+
+> docker tag <local_image's_sha256> <registry_repo>:<tag_name>
+
+>  docker push <registry_repo>:<tag_name>
+
+## DIR <manifests> will hold all the kubernetes config | all files under it will be yaml
+
