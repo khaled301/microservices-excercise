@@ -74,3 +74,16 @@ https://www.mysql.com/downloads/
 ```
 mysql -u<user_name> -p<password>
 ```
+
+### create secret.yaml under the manifests folder
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auth-secret
+stringData:
+  MYSQL_PASSWORD: 
+  JWT_SECRET: 
+type: Opaque
+
+```

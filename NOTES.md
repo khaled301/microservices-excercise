@@ -189,3 +189,43 @@ or
 
 ## DIR <manifests> will hold all the kubernetes config | all files under it will be yaml
 
+https://spacelift.io/blog/kubernetes-deployment-yaml
+
+### start minikube
+> minikube start
+### star K9s
+> k9s
+
+# Docker system prune
+
+> docker system prune
+
+### it will remove
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - unused build cache
+
+```
+minikube delete
+
+minikube start
+```
+
+# to run the infrastructure code from yaml | go to the folder that contains yamls
+
+> kubectl apply -f ./
+
+# to get the MYSQL variable in shell
+
+> env | grep MYSQL
+
+# WHAT is KUBERNETES
+### It is a tool to automate the manual task for containerized apps.
+
+https://kubernetes.io/docs/concepts/overview/working-with-objects/
+
+## To scale the kubernetes pods
+> kubectl scale deployment --replicas=6 service
+
+## kubectl CLI interfacing with the Kubernetes API and do the CRUD operation to K8s Clusters' objects in the background for us
