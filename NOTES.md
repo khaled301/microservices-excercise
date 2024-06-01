@@ -153,7 +153,7 @@ or
 
 
     2. Payload: Data. It contains CLAIMS for the users or the BEARER of the token. pieces of information about the user. 
-        The most part token can be defined manually but some claims such as "issuer of the token" or "expiration of the token" can be predefined.
+        The most part token can  be defined manually but some claims such as "issuer of the token" or "expiration of the token" can be predefined.
     ```
         {
             "sub": "12345",
@@ -216,6 +216,9 @@ minikube start
 
 > kubectl apply -f ./
 
+# To shutdown replicas in the k9s
+> kubectl scale deployment --replicas=0 gateway
+
 # to get the MYSQL variable in shell
 
 > env | grep MYSQL
@@ -229,3 +232,85 @@ https://kubernetes.io/docs/concepts/overview/working-with-objects/
 > kubectl scale deployment --replicas=6 service
 
 ## kubectl CLI interfacing with the Kubernetes API and do the CRUD operation to K8s Clusters' objects in the background for us
+
+#### flash pymongo
+https://flask-pymongo.readthedocs.io/en/latest/
+
+
+# Key terms
+
+### Asynchronous and Synchronous
+#### Interservice Communication
+
+### strong and eventual
+#### Consistency
+
+# RabbitMQ
+#### links
+1. https://www.rabbitmq.com/tutorials/amqp-concepts
+2. https://www.rabbitmq.com/docs/queues
+
+### Simple RabbitMQ Queue architecture
+1. Producer ==> exchange
+2. Exchange ==> queues (routing key)
+3. Queues ==> consumers (round robin)
+4. Consumers
+
+### To avoid bottle-necking of the consumer we can use competing consumers pattern
+
+#### this pattern simply enables the multiple concurrent consumers to process messages received in the same messaging channel. It will increase throughput if the queues is full of message
+
+#### by default the RabbitMQ will dispatch messages to the consuming services using the Round Robin algorithm
+
+
+#### When we publish a message in the RabbitMQ queue using channel. We must make sure the the message itself is durable along with queue itself. Otherwise it will be lost if pod crashes or restarts
+
+### Setting up the PERSISTENT_DELIVERY_MODE, under the properties, is important for durability of each message
+```
+    channel.basic_publish(
+        exchange="",
+        routing_key="video",
+        body=json.dumps(message),
+        properties=pika.BasicProperties(
+            delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE
+        )
+    )
+```
+
+
+##
+1. build docker image
+2. tag docker image
+3. push to docker hub
+4. create k8s manifests
+5. add deployment config yaml 
+
+
+### In K8 the service name resolve into that service's host ip address
+
+> AUTH_SVC_ADDRESS: "auth:5000"
+
+### in K8s contest the Service is just a group of pods. The service exists in a cluster inside a private network
+
+### To allow request from outside to hit the services' endpoint. 
+### To do this we can use [Ingress Controller] <ingress.yaml> which consists of load-balancer which essentially the entry point of the cluster and set of rules. The rules defines which request will go where. For instance, Ingress can direct to the internal service using cluster ip based on the request domain.
+### we can use <nginx> to handle the load balancer portion of the Ingress
+
+### for development, we need to map an custom address to our loopback address(127.0.0.1), the localhost ip, so that it can hit ingress load balancer endpoint
+### To do that in WINDOWS
+1. Navigate to C:\Windows\System32\drivers\etc.
+    - in Powershell
+    - - notepad C:\Windows\System32\drivers\etc\hosts
+2. In the "Open" dialog, change the file type from "Text Documents (.txt)" to "All Files (.*)" so you can see the hosts file.
+3. Select hosts and click Open.
+4. Add a new line with the following format:
+    > 127.0.0.1 yourdomain.com
+5. save
+6. Some browsers and operating systems have aggressive DNS caching. If changes don't appear to take effect, you may need to flush your DNS cache. This can be done by running ipconfig /flushdns in the Command Prompt.
+
+## To the add the Minikube Ingress Addon
+> minikube addons list
+> minikube addons enable ingress
+
+## whenever we want run or test the microservice architecture, we have run the below command
+> minikube tunnel
