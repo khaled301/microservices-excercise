@@ -329,3 +329,14 @@ https://flask-pymongo.readthedocs.io/en/latest/
 5. In this project we will use one replica to achieve the "Competing Consumer Pattern" 
 
 ### [rabbitmq:3-management] | here management is required for the GraphQL user interface | we need to define two ports | [amqp] = [advanced message queuing protocol] to send messages to the queue
+
+#### with [ClusterIP] ==> internal IP address and only accessible within the Cluster
+
+
+## To get a Pod's status 
+
+>  kubectl describe pod <pod_name>
+
+## To DELETE  all Resources created within the Dir 
+
+> kubectl delete -f ./

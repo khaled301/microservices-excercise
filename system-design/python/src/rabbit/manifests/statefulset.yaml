@@ -24,13 +24,13 @@ spec:
               containerPort: 5672
           envFrom:
             - configMapRef:
-              name: rabbitmq-configmap
+                name: rabbitmq-configmap
             - secretRef:
-              name: rabbitmq-secret
-          volumesMounts:
+                name: rabbitmq-secret
+          volumeMounts:
             - mountPath: "/var/lib/rabbitmq"
               name: rabbitmq-volume
-    volumes:
-      - name: rabbitmq-volume
-        persistentVolumeClaim:
-          claimName: rabbitmq-pvc
+      volumes:
+        - name: rabbitmq-volume
+          persistentVolumeClaim:
+            claimName: rabbitmq-pvc
