@@ -314,3 +314,18 @@ https://flask-pymongo.readthedocs.io/en/latest/
 
 ## whenever we want run or test the microservice architecture, we have run the below command
 > minikube tunnel
+
+# RabbitMQ
+### Stateful-sets 
+1. It is similar to the Deployment with few differences
+
+2. It manages the deployment and scaling of a set of pods
+
+3. Unlike the Deployment where the Pods are based on identical container spec, with the Stateful-Sets, each pods has a persistent identifier which it maintains for any rescheduling.
+
+4. If a pod fails, then the persistent pod identifier makes it easier to identify and match the existing volumes to the new pod that replace any that have failed.
+ - [Node ==> Pod ==> Container] ==> mount ==> [local disk volume]
+
+5. In this project we will use one replica to achieve the "Competing Consumer Pattern" 
+
+### [rabbitmq:3-management] | here management is required for the GraphQL user interface | we need to define two ports | [amqp] = [advanced message queuing protocol] to send messages to the queue
