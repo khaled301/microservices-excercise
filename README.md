@@ -1,4 +1,7 @@
 # Microservices - Python
+## Original Source:
+  - https://github.com/kantancoding/microservices-python
+  - Author: kantancoding
 
 ### Video to MP3 Conversion Processes
 1. Client send the video upload request to API Gateway
