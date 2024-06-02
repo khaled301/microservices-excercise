@@ -340,3 +340,12 @@ https://flask-pymongo.readthedocs.io/en/latest/
 ## To DELETE  all Resources created within the Dir 
 
 > kubectl delete -f ./
+
+## To access the RabbitMQ manager from Browser we have to run
+> minikube tunnel 
+
+1. user: guest
+
+## to read first 10 line
+
+> cat file.py | head -n 10

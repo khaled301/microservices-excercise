@@ -13,7 +13,7 @@ mongo = PyMongo(server)
 # 
 fs = gridfs.GridFS(mongo.db) 
 
-# Connect to RabbitMQ | RabbitMQ Host for queue "rabbitmq"| stateful sets
+# Connect to RabbitMQ | Resolves RabbitMQ Host for queue "rabbitmq"| stateful sets
 connection = pika.BlockingConnection(pika.ConnectionParameters("rabbitmq"))
 channel = connection.channel()
 
