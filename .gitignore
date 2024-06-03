@@ -1,4 +1,5 @@
 **/venv/*
+**/**/venv/*
 **/deactivate/*
 **/.venv/*
 **/secret.yaml

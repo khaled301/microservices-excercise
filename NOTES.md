@@ -349,3 +349,13 @@ https://flask-pymongo.readthedocs.io/en/latest/
 ## to read first 10 line
 
 > cat file.py | head -n 10
+
+## To view the Pods logs
+
+> kubectl logs -f [pod_name]
+
+## To watch Pods' statuses
+>  kubectl get pods --watch
+
+## To see Pods' events
+> kubectl get events --sort-by=.metadata.creationTimestamp

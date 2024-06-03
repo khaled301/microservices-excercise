@@ -7,7 +7,7 @@ def upload(f, fs, channel, access):
         return "internal server error:", 500
     
     message = {
-        "video_fid": fid,
+        "video_fid": str(fid),
         "mp3_fid": None,
         "username": access["username"]
     }
